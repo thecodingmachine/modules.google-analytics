@@ -1,0 +1,25 @@
+{
+    "name": "mouf/modules.google-analytics",
+    "description": "This module is used to add Google Analytics integration javascript into your web site.",
+    "keywords": ["google-analytics", "mouf"],
+    "homepage": "https://github.com/thecodingmachine/modules.google-analytics",
+    "type": "mouf-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Négrier",
+            "email": "d.negrier@thecodingmachine.com",
+            "homepage": "http://mouf-php.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.3.0",
+    	"mouf/html.htmlelement": "~2.0",
+		"mouf/mouf-installer": ">=2.0.0-dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Mouf": "src/"
+        }
+    }
+}
