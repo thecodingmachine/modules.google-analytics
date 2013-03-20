@@ -1,5 +1,5 @@
 <?php
-namespace Mouf\Html\Utils\WebLibraryManager;
+namespace Mouf\Modules\GoogleAnalytics;
 use Mouf\Html\HtmlElement\HtmlFromFile;
 
 use Mouf\Html\HtmlElement\HtmlString;
