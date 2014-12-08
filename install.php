@@ -5,6 +5,7 @@ require_once __DIR__."/../../autoload.php";
 
 use Mouf\Actions\InstallUtils;
 use Mouf\MoufManager;
+use Mouf\Html\Renderer\RendererUtils;
 
 // Let's init Mouf
 InstallUtils::init(InstallUtils::$INIT_APP);
@@ -48,6 +49,8 @@ if (!$moufManager->instanceExists("googleAnalyticsWebLibrary")) {
 		$webLibraries->setValue($webLibValues);
 	}
 }
+
+RendererUtils::createPackageRenderer($moufManager, "mouf/modules.google-analytics");
 
 // Let's rewrite the MoufComponents.php file to save the component
 $moufManager->rewriteMouf();

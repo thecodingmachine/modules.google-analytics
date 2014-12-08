@@ -1,36 +1,38 @@
 {
-    "name": "mouf/modules.google-analytics",
-    "description": "This module is used to add Google Analytics integration javascript into your web site.",
-    "keywords": ["google-analytics", "mouf"],
-    "homepage": "https://github.com/thecodingmachine/modules.google-analytics",
-    "type": "mouf-library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "David Négrier",
-            "email": "d.negrier@thecodingmachine.com",
-            "homepage": "http://mouf-php.com"
-        }
-    ],
-    "require": {
-    	"php": ">=5.3.0",
-    	"mouf/html.htmlelement": "~2.0",
-		"mouf/mouf-installer": ">=2.0.0-dev"
-    },
-    "autoload": {
-        "psr-0": {
-            "Mouf": "src/"
-        }
-    },
-    "extra": {
-	    "mouf": {
-	    	"install": [
-			{
-				"type": "file",
-		    	"file": "install.php"
-		   	}
+	"name" : "mouf/modules.google-analytics",
+	"description" : "This module is used to add Google Analytics integration javascript into your web site.",
+	"keywords" : [
+		"google-analytics",
+		"mouf"
+	],
+	"homepage" : "https://github.com/thecodingmachine/modules.google-analytics",
+	"type" : "mouf-library",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "David Négrier",
+			"email" : "d.negrier@thecodingmachine.com",
+			"homepage" : "http://mouf-php.com"
+		}
+	],
+	"require" : {
+		"php" : ">=5.4.0",
+		"mouf/html.htmlelement" : "~2.0",
+		"mouf/html.utils.weblibrarymanager" : "~3.0",
+		"mouf/mouf-installer" : "~2.0"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Mouf" : "src/"
+		}
+	},
+	"extra" : {
+		"mouf" : {
+			"install" : [{
+					"type" : "file",
+					"file" : "install.php"
+				}
 			],
-			"logo": "icons/logo.png"
-	    }
+			"logo" : "icons/logo.png"
+		}
 	}
 }

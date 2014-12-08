@@ -10,12 +10,10 @@ use Mouf\Html\Utils\WebLibraryManager\WebLibraryInterface;
 use Mouf\Html\Utils\WebLibraryManager\WebLibraryRendererInterface;
 
 /**
- * This class can be used to insert JS or CSS directly into the &lt;head&gt; tag (inline).
- * Content is loaded from PHP files passed to this object.
+ * This class can be used to insert Google Analytics tracking tag directly into your Mouf application.
  *
- * @Component
  */
-class GoogleAnalyticsWebLibrary implements WebLibraryInterface, WebLibraryRendererInterface {
+class GoogleAnalyticsWebLibrary implements WebLibraryInterface {
 	
 	
 	/**
@@ -23,14 +21,14 @@ class GoogleAnalyticsWebLibrary implements WebLibraryInterface, WebLibraryRender
 	 *
 	 * @var string
 	 */
-	private $accountKey;
+	protected $accountKey;
 	
 	/**
 	 * The base domain name to track (if you are tracking sub-domains). In the form: ".example.com"
 	 *
 	 * @var string
 	 */
-	private $domainName;
+	protected $domainName;
 	
 	/**
 	 * 
@@ -82,61 +80,22 @@ class GoogleAnalyticsWebLibrary implements WebLibraryInterface, WebLibraryRender
     }
     
     /**
-     * Returns the renderer class in charge of outputing the HTML that will load CSS ans JS files.
-     *
-     * @return WebLibraryRendererInterface
+     * Returns the google Analytics Key provided when you subscribed to your account (in the form UA-xxxxx-x). Keep this empty if you don't want to enable Google Analytics.
+     * @return string
      */
-    public function getRenderer() {
-    	return $this;
-    }
+	public function getAccountKey() {
+		return $this->accountKey;
+	}
+	
+	/**
+	 * Returns the base domain name to track (if you are tracking sub-domains). In the form: ".example.com"
+	 * @return string
+	 */
+	public function getDomainName() {
+		return $this->domainName;
+	}
+	
     
-    /**
-     * Renders the CSS part of a web library.
-     *
-     * @param WebLibraryInterface $webLibrary
-     */
-    function toCssHtml(WebLibraryInterface $webLibrary) {
-    	
-    }
     
-    /**
-     * Renders the JS part of a web library.
-     *
-     * @param WebLibraryInterface $webLibrary
-     */
-    function toJsHtml(WebLibraryInterface $webLibrary) {
-    	
-    }
-    
-    /**
-     * Renders any additional HTML that should be outputed below the JS and CSS part.
-     *
-     * @param WebLibraryInterface $webLibrary
-     */
-    function toAdditionalHtml(WebLibraryInterface $webLibrary) {
-    	if($this->accountKey) {
-    		?>
-    	<script type="text/javascript">
-    	//Google Analytics
-    	  var _gaq = _gaq || [];
-    	  _gaq.push(['_setAccount', '<?php echo addslashes($this->accountKey) ?>']);
-    	<?php 
-    		if ($this->domainName) {
-    			echo "_gaq.push(['_setDomainName', '".addslashes($this->domainName)."']);";
-    			echo "_gaq.push(['_setAllowLinker', true]);";	
-    		}
-    	?>
-    	  _gaq.push(['_trackPageview']);
-    	
-    	  (function() {
-    	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    	  })();
-    	
-    	</script>
-    	<?php 
-    	}
-    }
 }
 ?>
